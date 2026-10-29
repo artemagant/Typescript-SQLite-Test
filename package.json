@@ -1,0 +1,24 @@
+{
+  "name": "grammy",
+  "module": "main.ts",
+  "type": "module",
+  "scripts": {
+    "typecheck": "bun check",
+    "dev": "https_proxy=http://127.0.0.1:10808 http_proxy=http://127.0.0.1:10808 bun run --watch ./src/main.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^7"
+  },
+  "dependencies": {
+    "@grammyjs/auto-retry": "^2.0.2",
+    "@grammyjs/hydrate": "^1.7.0",
+    "@grammyjs/ratelimiter": "^1.2.1",
+    "@grammyjs/runner": "^2.0.3",
+    "@grammyjs/transformer-throttler": "^1.2.1",
+    "dotenv": "^18.0.9",
+    "grammy": "^1.46.0"
+  }
+}
