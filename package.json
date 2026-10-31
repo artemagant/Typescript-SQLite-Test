@@ -4,9 +4,12 @@
   "type": "module",
   "scripts": {
     "typecheck": "bun check",
-    "dev": "https_proxy=http://127.0.0.1:10808 http_proxy=http://127.0.0.1:10808 bun run --watch ./src/main.ts"
+    "dev": "https_proxy=http://127.0.0.1:10808 http_proxy=http://127.0.0.1:10808 bun run --watch ./src/main.ts",
+    "db-test": "bun run --watch ./src/data.ts",
+    "start": "bun run ./src/main.ts"
   },
   "devDependencies": {
+    "@types/better-sqlite3": "^9.6.0",
     "@types/bun": "latest"
   },
   "peerDependencies": {
@@ -18,6 +21,7 @@
     "@grammyjs/ratelimiter": "^1.2.1",
     "@grammyjs/runner": "^2.0.3",
     "@grammyjs/transformer-throttler": "^1.2.1",
+    "better-sqlite3": "^13.0.3",
     "dotenv": "^18.0.9",
     "grammy": "^1.46.0"
   }

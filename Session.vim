@@ -10,17 +10,22 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 let s:shortmess_save = &shortmess
 set shortmess+=aoO
-badd +48 src/main.ts
+badd +28 src/main.ts
 badd +6 src/catch_errors.ts
-badd +21 src/commands.ts
+badd +23 src/commands.ts
 badd +13 src/on_message.ts
-badd +10 src/keyboard.ts
+badd +12 src/keyboard.ts
 badd +3 on_keyboard.ts
-badd +16 src/on_keyboard.ts
+badd +32 src/on_keyboard.ts
+badd +1 src
+badd +18 src/menus_labels.ts
+badd +13 src/data.ts
 argglobal
 %argdel
-$argadd src/
+$argadd src
 set stal=2
+tabnew +setlocal\ bufhidden=wipe
+tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
@@ -37,12 +42,12 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 58 - ((13 * winheight(0) + 15) / 30)
+let s:l = 68 - ((15 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 58
-normal! 015|
+keepjumps 68
+normal! 027|
 lcd ~/Desktop/Code/typescript/telegram_bot_test
 tabnext
 edit ~/Desktop/Code/typescript/telegram_bot_test/src/commands.ts
@@ -58,12 +63,12 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 30 - ((21 * winheight(0) + 15) / 30)
+let s:l = 23 - ((22 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 30
-normal! 013|
+keepjumps 23
+normal! 017|
 lcd ~/Desktop/Code/typescript/telegram_bot_test
 tabnext
 edit ~/Desktop/Code/typescript/telegram_bot_test/src/keyboard.ts
@@ -79,12 +84,12 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 7 - ((6 * winheight(0) + 15) / 30)
+let s:l = 13 - ((12 * winheight(0) + 11) / 23)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 7
-normal! 0
+keepjumps 13
+normal! 06|
 lcd ~/Desktop/Code/typescript/telegram_bot_test
 tabnext
 edit ~/Desktop/Code/typescript/telegram_bot_test/src/on_keyboard.ts
@@ -99,14 +104,56 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 15 - ((14 * winheight(0) + 25) / 50)
+let s:l = 24 - ((11 * winheight(0) + 11) / 23)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 15
-normal! 06|
+keepjumps 24
+normal! 070|
 lcd ~/Desktop/Code/typescript/telegram_bot_test
-tabnext 3
+tabnext
+edit ~/Desktop/Code/typescript/telegram_bot_test/src/menus_labels.ts
+argglobal
+balt ~/Desktop/Code/typescript/telegram_bot_test/src/on_keyboard.ts
+setlocal foldmethod=manual
+setlocal foldexpr=0
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldenable
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 22 - ((21 * winheight(0) + 25) / 50)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 22
+normal! 0115|
+lcd ~/Desktop/Code/typescript/telegram_bot_test
+tabnext
+edit ~/Desktop/Code/typescript/telegram_bot_test/src/data.ts
+argglobal
+balt ~/Desktop/Code/typescript/telegram_bot_test/src/menus_labels.ts
+setlocal foldmethod=manual
+setlocal foldexpr=0
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldenable
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 13 - ((10 * winheight(0) + 11) / 23)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 13
+normal! 0
+lcd ~/Desktop/Code/typescript/telegram_bot_test
+tabnext 1
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -120,7 +167,6 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

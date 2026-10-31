@@ -9,13 +9,16 @@ import { CatchErrors } from "./catch_errors.ts"
 import { Commands } from "./commands.ts"
 import { OnKeyboard } from "./on_keyboard.ts"
 
-const Token: String = Bun.env.TOKEN;
+const Token: string | undefined = Bun.env.TOKEN;
+if (!Token) {
+    throw new Error("TOKEN in .env is not assigned");
+}
 
 const bot = new Bot(Token);
 bot.use(hydrate());
 bot.use(limit({
     timeFrame: 2000,
-    limit: 3,
+    limit: 5,
 
     onLimitExceeded: async (ctx) => {
         await ctx.reply("Stop spamming fucking buttons!");
@@ -62,7 +65,7 @@ bot.on("callback_query:data", OnKeyboard);
 
 bot.catch(CatchErrors);
 
-console.log("fucku");
+console.log("Bot is running");
 
 const handle = run(bot);
 
